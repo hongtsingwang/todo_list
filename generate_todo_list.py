@@ -4,15 +4,16 @@ import os
 import sys
 import datetime
 
-todo_list_file = open("habit_file")
-motto_file = open("motto")
-longtime_file = open("longtime_job")
-markdown_dir = "./markdown"
+
+todo_list_file = open("habit_file", encoding="utf-8")
+motto_file = open("motto", encoding="utf-8")
+longtime_file = open("longtime_job", encoding="utf-8")
+markdown_dir = os.path.join(os.getcwd(), "markdown")
 today = datetime.datetime.now().strftime("%Y%m%d")
 week = datetime.datetime.now().strftime("%w")
 if week == "0":
     week = "7"
-today_todo_list_file = open(os.path.join(markdown_dir, today + ".md"), "w")
+today_todo_list_file = open(os.path.join(markdown_dir, today + ".md"), "w", encoding="utf-8")
 
 info = ""
 
@@ -34,7 +35,8 @@ def write_habit():
                 today_todo_list_file.write("\n")
         except:
             print(line)
-    today_todo_list_file.write("## 今日需做\n")
+    today_todo_list_file.write("## 今日需做\n\n")
+    today_todo_list_file.write("## 可做可不做\n\n")
     today_todo_list_file.write("\n")
 
 
