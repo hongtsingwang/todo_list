@@ -82,6 +82,13 @@ def write_jinzhan():
 
 def write_summary():
     today_todo_list_file.write("# 总结\n")
+    today_todo_list_file.write("\n" * 2)
+    today_todo_list_file.write("## 值得记住的事情\n")
+    today_todo_list_file.write("\n" * 2)
+    today_todo_list_file.write("## 做的好的地方\n")
+    today_todo_list_file.write("\n" * 2)
+    today_todo_list_file.write("## 做的不好的地方\n")
+
 
 
 if __name__ == "__main__":
