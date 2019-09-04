@@ -61,19 +61,17 @@ def write_motto():
     for line in motto_file:
         try:
             line = line.strip()
-            # frequency_list = frequency.split(",")
-            # if week in frequency_list:
             index += 1
             today_todo_list_file.write(str(index) + ". ")
             today_todo_list_file.write(line)
             today_todo_list_file.write("\n")
         except:
             print(line)
-    # motto_info = motto_file.read()
-
-    # today_todo_list_file.write(motto_info)
     today_todo_list_file.write("\n")
-
+    today_todo_list_file.write("# 每半个小时提醒自己\n") 
+    today_todo_list_file.write("\n" * 2)
+    today_todo_list_file.write("# 努力目标\n") 
+    today_todo_list_file.write("## 截至昨日，目标还剩\n") 
 
 def write_jinzhan():
     today_todo_list_file.write("# 进展\n")
