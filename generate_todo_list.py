@@ -3,18 +3,29 @@
 import os
 import sys
 import datetime
+import platform
 
+system_str=platform.system()
+print(system_str)
 
-todo_list_file = open("habit_file", encoding="utf-8")
-motto_file = open("motto", encoding="utf-8")
-longtime_file = open("longtime_job", encoding="utf-8")
-markdown_dir = os.path.join(os.getcwd(), "markdown")
-today = datetime.datetime.now().strftime("%Y%m%d")
+if system_str == "windows":
+    todo_list_file = open("habit_file", encoding="utf-8")
+    motto_file = open("motto", encoding="utf-8")
+    longtime_file = open("longtime_job", encoding="utf-8")
+    markdown_dir = os.path.join(os.getcwd(), "markdown")
+    today = datetime.datetime.now().strftime("%Y%m%d")
+    today_todo_list_file = open(os.path.join(markdown_dir, today + ".md"), "w", encoding="utf-8")
+else:
+    todo_list_file = open("habit_file")
+    motto_file = open("motto")
+    longtime_file = open("longtime_job")
+    markdown_dir = os.path.join(os.getcwd(), "markdown")
+    today = datetime.datetime.now().strftime("%Y%m%d")
+    today_todo_list_file = open(os.path.join(markdown_dir, today + ".md"), "w")
+
 week = datetime.datetime.now().strftime("%w")
 if week == "0":
     week = "7"
-today_todo_list_file = open(os.path.join(markdown_dir, today + ".md"), "w", encoding="utf-8")
-
 info = ""
 
 
@@ -68,10 +79,10 @@ def write_motto():
         except:
             print(line)
     today_todo_list_file.write("\n")
-    today_todo_list_file.write("# 每半个小时提醒自己\n") 
+    today_todo_list_file.write("# 每半个小时提醒自己\n")
     today_todo_list_file.write("\n" * 2)
-    today_todo_list_file.write("# 努力目标\n") 
-    today_todo_list_file.write("## 截至昨日，目标还剩\n") 
+    today_todo_list_file.write("# 努力目标\n")
+    today_todo_list_file.write("## 截至昨日，目标还剩\n")
 
 def write_jinzhan():
     today_todo_list_file.write("# 进展\n")
